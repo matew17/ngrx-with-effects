@@ -1,0 +1,36 @@
+<ng-container *ngIf="loading; else loaded">
+  <div class="alert alert-info text-center">
+    <h4>Loading</h4>
+    <p>
+      <i class="fa fa-sync fa-spin fa-2x"> </i>
+    </p>
+    <p class="mb-0"></p>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="error">
+  <div class="alert alert-danger text-center">
+    <h4>Error</h4>
+    <pre>
+      {{ error | json }}
+    </pre>
+  </div>
+</ng-container>
+
+<ng-template #loaded>
+  <div class="card-columns">
+    <div class="card">
+      <img [src]="user.avatar" class="card-img-top" [alt]="user.first_name" />
+      <div class="card-body">
+        <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+        <p class="card-text">
+          {{ user.email }}
+        </p>
+
+        <p class="card-text">
+          <span class="text-muted">ID: {{ user.id }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
